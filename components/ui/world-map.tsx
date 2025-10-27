@@ -4,7 +4,7 @@ import DottedMap from "dotted-map";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { useRef } from "react";
+import { useRef, useMemo, useEffect, useState } from "react";
 
 interface MapProps {
   dots?: Array<{
@@ -19,16 +19,26 @@ export default function WorldMap({
   lineColor = "#0ea5e9",
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const map = new DottedMap({ height: 100, grid: "diagonal" });
-
+  const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
 
-  const svgMap = map.getSVG({
-    radius: 0.22,
-    color: theme === "dark" ? "#FFFFFF40" : "#00000040",
-    shape: "circle",
-    backgroundColor: "transparent",
-  });
+  // Prevent hydration mismatch by only generating SVG after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Memoize the map generation to ensure consistency
+  const svgMap = useMemo(() => {
+    if (!mounted) return "";
+    
+    const map = new DottedMap({ height: 100, grid: "diagonal" });
+    return map.getSVG({
+      radius: 0.22,
+      color: theme === "dark" ? "#FFFFFF40" : "#00000040",
+      shape: "circle",
+      backgroundColor: "transparent",
+    });
+  }, [mounted, theme]);
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
@@ -51,11 +61,22 @@ export default function WorldMap({
     id: `dot-${dot.start.lat}-${dot.start.lng}-${dot.end.lat}-${dot.end.lng}-${i}`,
   }));
 
+  // Show placeholder during SSR to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="w-full aspect-2/1 rounded-lg relative font-sans bg-muted/20 animate-pulse">
+        <div className="h-full w-full flex items-center justify-center text-muted-foreground">
+          Loading map...
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full aspect-[2/1] rounded-lg relative font-sans">
+    <div className="w-full aspect-2/1 rounded-lg relative font-sans">
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-        className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
+        className="h-full w-full mask-[linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
         alt="world map showing global connectivity"
         height={495}
         width={1056}
