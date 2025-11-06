@@ -29,7 +29,7 @@ export async function ExperienceSection() {
   }
 
   const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString("en-US", {
+    return new Date(date).toLocaleDateString("es-ES", {
       year: "numeric",
       month: "short",
     });
@@ -39,12 +39,8 @@ export async function ExperienceSection() {
     <section id="experience" className="py-20 px-6">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Work Experience
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            My professional journey
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Experiencia profesional</h2>
+          <p className="text-xl text-muted-foreground">Trayectoria y responsabilidades</p>
         </div>
 
         <div className="space-y-8">
@@ -90,10 +86,10 @@ export async function ExperienceSection() {
                       <span>
                         {exp.startDate && formatDate(exp.startDate)} -{" "}
                         {exp.current
-                          ? "Present"
+                          ? "Actualidad"
                           : exp.endDate
                             ? formatDate(exp.endDate)
-                            : "N/A"}
+                            : ""}
                       </span>
                       {exp.location && (
                         <>
@@ -113,9 +109,7 @@ export async function ExperienceSection() {
 
                 {exp.responsibilities && exp.responsibilities.length > 0 && (
                   <div className="mb-4">
-                    <h4 className="font-semibold mb-2 text-sm @md/card:text-base">
-                      Key Responsibilities:
-                    </h4>
+                    <h4 className="font-semibold mb-2 text-sm @md/card:text-base">Responsabilidades</h4>
                     <ul className="list-disc list-inside space-y-1 text-muted-foreground text-xs @md/card:text-sm">
                       {exp.responsibilities.map((resp, idx) => (
                         <li key={`${exp.company}-resp-${idx}`}>{resp}</li>
@@ -124,20 +118,7 @@ export async function ExperienceSection() {
                   </div>
                 )}
 
-                {exp.achievements && exp.achievements.length > 0 && (
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2 text-sm @md/card:text-base">
-                      Achievements:
-                    </h4>
-                    <ul className="list-disc list-inside space-y-1 text-muted-foreground text-xs @md/card:text-sm">
-                      {exp.achievements.map((achievement, idx) => (
-                        <li key={`${exp.company}-achievement-${idx}`}>
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                {/* Ocultamos bloque de logros por preferencia del cliente */}
 
                 {exp.technologies && exp.technologies.length > 0 && (
                   <div className="flex flex-wrap gap-1.5 @md/card:gap-2 mt-4">

@@ -1,5 +1,7 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
+// Configuración de Clerk que permite todas las rutas como públicas
+// La autenticación es opcional, permitiendo usuarios anónimos
 export default clerkMiddleware();
 
 export const config = {

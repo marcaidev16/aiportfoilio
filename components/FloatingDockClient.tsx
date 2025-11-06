@@ -55,11 +55,11 @@ export function FloatingDockClient({ navItems }: FloatingDockClientProps) {
       icon: <DynamicIcon iconName={item.icon || "IconHome"} />,
       isExternal: item.isExternal,
     })),
-    ...(isSignedIn && !isSidebarOpen
+    ...(isSignedIn
       ? [
           {
-            title: "Sign Out",
-            icon: <IconLogout className="h-full w-full" />,
+            title: "Cerrar Sesión",
+            icon: <IconLogout className="h-full w-full text-purple-400" />,
             onClick: () => signOut(),
           },
         ]

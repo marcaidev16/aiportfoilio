@@ -32,7 +32,7 @@ export const BackgroundRippleEffect = ({
         <div className="pointer-events-none absolute inset-0 z-[2] h-full w-full overflow-hidden" />
         <DivGrid
           key={`base-${rippleKey}`}
-          className="mask-radial-from-20% mask-radial-at-top opacity-600"
+          className="mask-radial-from-10% mask-radial-at-top opacity-600"
           rows={rows}
           cols={cols}
           cellSize={cellSize}
@@ -44,6 +44,43 @@ export const BackgroundRippleEffect = ({
             setRippleKey((k) => k + 1);
           }}
           interactive
+        />
+        {/* Edge fade overlays to soften rectangular edges - all using background color */}
+        {/* Bottom fade */}
+        <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute bottom-0 left-0 right-0 z-[4] h-[35%]",
+            "bg-gradient-to-t from-white to-transparent",
+            "dark:bg-gradient-to-t dark:from-[oklch(0.145_0_0)] dark:to-transparent",
+          )}
+        />
+        {/* Left fade */}
+        <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute bottom-0 top-0 left-0 z-[4] w-[20%]",
+            "bg-gradient-to-r from-white to-transparent",
+            "dark:bg-gradient-to-r dark:from-[oklch(0.145_0_0)] dark:to-transparent",
+          )}
+        />
+        {/* Right fade */}
+        <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute bottom-0 top-0 right-0 z-[4] w-[20%]",
+            "bg-gradient-to-l from-white to-transparent",
+            "dark:bg-gradient-to-l dark:from-[oklch(0.145_0_0)] dark:to-transparent",
+          )}
+        />
+        {/* Top fade - radial */}
+        <div
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-0 z-[4]",
+            "bg-[radial-gradient(ellipse_120%_180%_at_50%_-10%,transparent_35%,rgba(255,255,255,0.4)_65%,rgba(255,255,255,0.8)_90%,rgba(255,255,255,1)_100%)]",
+            "dark:bg-[radial-gradient(ellipse_120%_180%_at_50%_-10%,transparent_35%,oklch(0.145_0_0/0.4)_65%,oklch(0.145_0_0/0.8)_90%,oklch(0.145_0_0/1)_100%)]",
+          )}
         />
       </div>
     </div>

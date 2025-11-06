@@ -1,6 +1,5 @@
 "use client";
 
-import { useClerk, useUser } from "@clerk/nextjs";
 import { MessageCircle, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -19,13 +18,11 @@ export function ProfileImage({
 }: ProfileImageProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { toggleSidebar, open } = useSidebar();
-  const { isSignedIn } = useUser();
-  const { openSignIn } = useClerk();
 
   return (
     <button
       type="button"
-      onClick={() => (isSignedIn ? toggleSidebar() : openSignIn())}
+      onClick={() => toggleSidebar()}
       className="relative aspect-square rounded-2xl overflow-hidden border-4 border-primary/20 block group cursor-pointer w-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -62,10 +59,10 @@ export function ProfileImage({
           )}
 
           <div className="text-white text-xl font-semibold">
-            {open ? "Close Chat" : "Chat with AI Twin"}
+            {open ? "Cerrar chat" : "Chatear con mi IA"}
           </div>
           <div className="text-white/80 text-sm">
-            {open ? "Click to close chat" : "Click to open chat"}
+            {open ? "Haz clic para cerrar" : "Haz clic para abrir"}
           </div>
         </div>
       </div>

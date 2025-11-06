@@ -25,7 +25,7 @@ export async function BlogSection() {
   }
 
   const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString("en-US", {
+    return new Date(date).toLocaleDateString("es-ES", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -36,12 +36,8 @@ export async function BlogSection() {
     <section id="blog" className="py-20 px-6 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Latest Blog Posts
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Thoughts, tutorials, and insights
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Últimos artículos</h2>
+          <p className="text-xl text-muted-foreground">Ideas, tutoriales y recursos</p>
         </div>
 
         <div className="@container">
@@ -54,18 +50,15 @@ export async function BlogSection() {
                 {post.featuredImage && (
                   <div className="relative aspect-video overflow-hidden bg-muted">
                     <Image
-                      src={urlFor(post.featuredImage)
-                        .width(600)
-                        .height(400)
-                        .url()}
-                      alt={post.title || "Blog post"}
+                      src={urlFor(post.featuredImage).width(600).height(400).url()}
+                      alt={post.title || "Entrada del blog"}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 )}
 
-                {/* Content */}
+                {/* Contenido */}
                 <div className="p-4 @md/card:p-6 space-y-3 @md/card:space-y-4">
                   <div className="flex flex-col @xs/card:flex-row @xs/card:items-center gap-2 text-xs @md/card:text-sm text-muted-foreground">
                     {post.category && (
@@ -75,47 +68,32 @@ export async function BlogSection() {
                     )}
                     <div className="flex items-center gap-2">
                       {post.publishedAt && (
-                        <span className="truncate">
-                          {formatDate(post.publishedAt)}
-                        </span>
+                        <span className="truncate">{formatDate(post.publishedAt)}</span>
                       )}
                       {post.readTime && (
                         <>
                           <span>•</span>
-                          <span>{post.readTime} min read</span>
+                          <span>{post.readTime} min</span>
                         </>
                       )}
                     </div>
                   </div>
 
-                  <h3 className="text-lg @md/card:text-xl font-semibold group-hover:text-primary transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-
-                  <p className="text-muted-foreground text-xs @md/card:text-sm line-clamp-3">
-                    {post.excerpt}
-                  </p>
-
-                  {/* Tags */}
-                  {post.tags && post.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 @md/card:gap-2">
-                      {post.tags.slice(0, 3).map((tag: string) => (
-                        <span
-                          key={`${post.slug?.current}-${tag}`}
-                          className="text-xs px-2 py-0.5 @md/card:py-1 rounded-md bg-muted"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
+                  <h3 className="text-lg @md/card:text-xl font-semibold line-clamp-2">{post.title}</h3>
+                  {post.excerpt && (
+                    <p className="text-sm @md/card:text-base text-muted-foreground line-clamp-3">
+                      {post.excerpt}
+                    </p>
                   )}
 
-                  <Link
-                    href={`/blog/${post.slug?.current}`}
-                    className="inline-flex items-center text-primary hover:underline text-xs @md/card:text-sm font-medium"
-                  >
-                    Read More →
-                  </Link>
+                  <div className="pt-2">
+                    <Link
+                      href={`/blog/${post.slug?.current}`}
+                      className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                    >
+                      Leer más
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
@@ -125,3 +103,4 @@ export async function BlogSection() {
     </section>
   );
 }
+

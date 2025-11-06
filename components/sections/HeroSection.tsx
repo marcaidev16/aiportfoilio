@@ -149,3 +149,4 @@ export async function HeroSection() {
     </section>
   );
 }
+

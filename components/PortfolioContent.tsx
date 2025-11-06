@@ -1,13 +1,12 @@
 import {
   AboutSection,
-  AchievementsSection,
   BlogSection,
   CertificationsSection,
   ContactSection,
-  EducationSection,
+  EducationProjectsSection,
   ExperienceSection,
+  FeaturesSection,
   HeroSection,
-  ProjectsSection,
   ServicesSection,
   SkillsSection,
   TestimonialsSection,
@@ -17,16 +16,15 @@ async function PortfolioContent() {
   return (
     <>
       <HeroSection />
+      <FeaturesSection />
       <AboutSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <SkillsSection />
       <ExperienceSection />
-      <EducationSection />
-      <ProjectsSection />
+      <EducationProjectsSection />
       <CertificationsSection />
-      <AchievementsSection />
       <ServicesSection />
-      <BlogSection />
+      {/* <BlogSection /> */}
       <ContactSection />
     </>
   );

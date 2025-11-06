@@ -6,9 +6,9 @@ import { WORKFLOW_ID } from "@/lib/config";
 export async function createSession() {
   const { userId } = await auth();
 
-  if (!userId) {
-    throw new Error("Unauthorized - Please sign in");
-  }
+  // Permitir usuarios no autenticados (anónimos)
+  // El rate limit se maneja por mensaje en onResponseStart
+  // Para usuarios anónimos se usa IP, para autenticados se usa userId
 
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
@@ -29,7 +29,7 @@ export async function createSession() {
     },
     body: JSON.stringify({
       workflow: { id: WORKFLOW_ID },
-      user: userId,
+      user: userId || `anon-${Date.now()}`, // ID temporal para usuarios anónimos
     }),
   });
 

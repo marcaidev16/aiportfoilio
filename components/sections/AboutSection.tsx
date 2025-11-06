@@ -25,8 +25,8 @@ export async function AboutSection() {
     <section id="about" className="py-20 px-6">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
-          <p className="text-xl text-muted-foreground">Get to know me better</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Sobre mí</h2>
+          <p className="text-xl text-muted-foreground">Para conocernos mejor</p>
         </div>
 
         <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -95,17 +95,17 @@ export async function AboutSection() {
 
         {/* Stats from CMS */}
         {profile.stats && profile.stats.length > 0 && (
-          <div className="@container mt-12 pt-12 border-t">
-            <div className="grid grid-cols-2 @lg:grid-cols-4 gap-6">
+          <div className="mt-12 pt-12 border-t">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
               {profile.stats.map((stat, idx) => (
                 <div
                   key={`${stat.label}-${idx}`}
-                  className="@container/stat text-center"
+                  className="text-center"
                 >
-                  <div className="text-3xl @md/stat:text-4xl font-bold text-primary mb-2">
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-3">
                     {stat.value}
                   </div>
-                  <div className="text-xs @md/stat:text-sm text-muted-foreground">
+                  <div className="text-sm md:text-base text-muted-foreground">
                     {stat.label}
                   </div>
                 </div>
