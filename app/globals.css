@@ -156,3 +156,368 @@
 .transform-3d {
   transform-style: preserve-3d;
 }
+/* ChatKit Dark Purple Theme */
+.chatkit-dark-purple {
+  /* === Variables de Color === */
+
+  /* Fondos - Gris muy oscuro con tinte morado */
+  --ck-bg-primary: #0a0a0f;
+  --ck-bg-secondary: #13131a;
+  --ck-bg-tertiary: #1a1a24;
+  --ck-bg-hover: #21212e;
+
+  /* Acentos - Morado neón */
+  --ck-accent: #a855f7;
+  --ck-accent-hover: #c084fc;
+  --ck-accent-active: #9333ea;
+  --ck-accent-glow: rgba(168, 85, 247, 0.4);
+  --ck-accent-soft: rgba(168, 85, 247, 0.15);
+
+  /* Bordes */
+  --ck-border: rgba(168, 85, 247, 0.15);
+  --ck-border-hover: rgba(168, 85, 247, 0.3);
+  --ck-border-focus: var(--ck-accent);
+
+  /* Texto */
+  --ck-text-primary: #e5e5e5;
+  --ck-text-secondary: #a1a1aa;
+  --ck-text-tertiary: #71717a;
+}
+
+/* === Estructura Principal === */
+.chatkit-dark-purple [data-chatkit-root],
+.chatkit-dark-purple [data-chatkit-container] {
+  background: var(--ck-bg-primary) !important;
+}
+
+/* === Header === */
+.chatkit-dark-purple [data-chatkit-header] {
+  background: var(--ck-bg-primary) !important;
+  border-bottom: 1px solid var(--ck-border) !important;
+}
+
+.chatkit-dark-purple [data-chatkit-header-title] {
+  color: var(--ck-text-primary) !important;
+}
+
+/* === Mensajes === */
+.chatkit-dark-purple [data-chatkit-message] {
+  background: var(--ck-bg-secondary) !important;
+  border: 1px solid var(--ck-border) !important;
+  border-radius: 12px !important;
+}
+
+.chatkit-dark-purple [data-chatkit-message]:hover {
+  background: var(--ck-bg-tertiary) !important;
+  border-color: var(--ck-border-hover) !important;
+}
+
+.chatkit-dark-purple [data-chatkit-message-user] {
+  background: #050508 !important;
+  border-color: var(--ck-border-hover) !important;
+  color: #ffffff !important;
+}
+
+.chatkit-dark-purple [data-chatkit-message-user] * {
+  color: #ffffff !important;
+  font-weight: 400 !important;
+}
+
+/* === Composer (Input Area) === */
+.chatkit-dark-purple [data-chatkit-composer] {
+  background: var(--ck-bg-tertiary) !important;
+  border: 1px solid var(--ck-border) !important;
+  border-radius: 16px !important;
+}
+
+.chatkit-dark-purple [data-chatkit-composer]:focus-within {
+  border-color: var(--ck-border-focus) !important;
+  box-shadow: 0 0 0 3px var(--ck-accent-glow) !important;
+}
+
+.chatkit-dark-purple [data-chatkit-input],
+.chatkit-dark-purple textarea {
+  background: transparent !important;
+  color: var(--ck-text-primary) !important;
+}
+
+.chatkit-dark-purple [data-chatkit-input]::placeholder,
+.chatkit-dark-purple textarea::placeholder {
+  color: var(--ck-text-tertiary) !important;
+}
+
+/* === Botones === */
+.chatkit-dark-purple button {
+  transition: all 0.2s ease !important;
+}
+
+.chatkit-dark-purple button[data-chatkit-send-button],
+.chatkit-dark-purple button[data-primary="true"] {
+  background: var(--ck-accent) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.chatkit-dark-purple button[data-chatkit-send-button]:hover,
+.chatkit-dark-purple button[data-primary="true"]:hover {
+  background: var(--ck-accent-hover) !important;
+  box-shadow: 0 0 16px var(--ck-accent-glow) !important;
+  transform: translateY(-1px) !important;
+}
+
+.chatkit-dark-purple button[data-chatkit-send-button]:active,
+.chatkit-dark-purple button[data-primary="true"]:active {
+  background: var(--ck-accent-active) !important;
+  transform: translateY(0) !important;
+}
+
+.chatkit-dark-purple button:not([data-primary="true"]) {
+  background: var(--ck-bg-tertiary) !important;
+  border: 1px solid var(--ck-border) !important;
+  color: var(--ck-text-secondary) !important;
+}
+
+.chatkit-dark-purple button:not([data-primary="true"]):hover {
+  background: var(--ck-bg-hover) !important;
+  border-color: var(--ck-border-hover) !important;
+  box-shadow: 0 0 8px var(--ck-accent-glow) !important;
+}
+
+/* === Start Screen === */
+.chatkit-dark-purple [data-chatkit-start-screen] {
+  background: var(--ck-bg-primary) !important;
+}
+
+.chatkit-dark-purple [data-chatkit-greeting] {
+  color: var(--ck-text-primary) !important;
+}
+
+.chatkit-dark-purple [data-chatkit-prompt-card] {
+  background: var(--ck-bg-secondary) !important;
+  border: 1px solid var(--ck-border) !important;
+  transition: all 0.2s ease !important;
+}
+
+.chatkit-dark-purple [data-chatkit-prompt-card]:hover {
+  background: var(--ck-bg-tertiary) !important;
+  border-color: var(--ck-accent) !important;
+  box-shadow: 0 4px 16px var(--ck-accent-glow) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* === Scrollbar === */
+.chatkit-dark-purple ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chatkit-dark-purple ::-webkit-scrollbar-track {
+  background: var(--ck-bg-secondary);
+}
+
+.chatkit-dark-purple ::-webkit-scrollbar-thumb {
+  background: var(--ck-accent-soft);
+  border-radius: 4px;
+}
+
+.chatkit-dark-purple ::-webkit-scrollbar-thumb:hover {
+  background: var(--ck-accent);
+}
+
+/* === Efectos de Glow === */
+.chatkit-dark-purple [data-chatkit-message-user]::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--ck-accent), transparent);
+  border-radius: 12px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.chatkit-dark-purple [data-chatkit-message-user]:hover::before {
+  opacity: 0.3;
+}
+
+/* === Model Selector === */
+.chatkit-dark-purple [data-chatkit-model-selector] {
+  background: var(--ck-bg-tertiary) !important;
+  border: 1px solid var(--ck-border) !important;
+}
+
+.chatkit-dark-purple [data-chatkit-model-option] {
+  color: var(--ck-text-secondary) !important;
+}
+
+.chatkit-dark-purple [data-chatkit-model-option]:hover,
+.chatkit-dark-purple [data-chatkit-model-option][data-selected="true"] {
+  background: var(--ck-accent-soft) !important;
+  color: var(--ck-accent-hover) !important;
+}
+
+/* === Loading States === */
+.chatkit-dark-purple [data-chatkit-loading] {
+  color: var(--ck-accent) !important;
+}
+
+/* === Animaciones === */
+@keyframes purple-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--ck-accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 16px var(--ck-accent-glow);
+  }
+}
+
+.chatkit-dark-purple [data-chatkit-send-button]:not(:disabled) {
+  animation: purple-glow 2s ease-in-out infinite;
+}
+
+/* === Rate Limit - Overlay y Composer Deshabilitado === */
+.rate-limit-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(10, 10, 15, 0.98), rgba(10, 10, 15, 0.95));
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-top: 2px solid rgba(168, 85, 247, 0.3);
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.rate-limit-message {
+  text-align: center;
+  color: #ffffff;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.rate-limit-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.rate-limit-message h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #a855f7;
+}
+
+.rate-limit-message p {
+  font-size: 1rem;
+  color: #a1a1aa;
+  margin-bottom: 0.5rem;
+}
+
+.rate-limit-time {
+  font-size: 0.875rem;
+  color: #71717a;
+  font-style: italic;
+}
+
+.rate-limit-refresh {
+  font-size: 0.75rem;
+  color: #52525b;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.rate-limit-login-button {
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #a855f7, #9333ea);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+.rate-limit-login-button:hover {
+  background: linear-gradient(135deg, #b77af7, #a855f7);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+  transform: translateY(-2px);
+}
+
+.rate-limit-login-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
+}
+
+/* Deshabilitar composer cuando rate limit alcanzado */
+.chatkit-dark-purple.rate-limit-reached [data-chatkit-composer] {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+  filter: grayscale(100%);
+}
+
+.chatkit-dark-purple.rate-limit-reached [data-chatkit-composer] * {
+  cursor: not-allowed !important;
+}
+
+/* Deshabilitar prompts en start screen */
+.chatkit-dark-purple.rate-limit-reached [data-chatkit-prompt-card] {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+
+/* === Disclaimer Link Styling === */
+.chatkit-dark-purple [data-chatkit-disclaimer] {
+  cursor: pointer;
+}
+
+/* Detectar y estilizar "Inicia sesión" en el disclaimer */
+.chatkit-dark-purple [data-chatkit-disclaimer]:not(.rate-limit-reached) {
+  position: relative;
+}
+
+.chatkit-dark-purple [data-chatkit-disclaimer]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: auto;
+}
+
+/* Cuando el usuario hace click en el disclaimer, redirigir a sign-in */
+.chatkit-dark-purple [data-chatkit-disclaimer]:hover {
+  cursor: pointer;
+}
